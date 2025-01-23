@@ -42,6 +42,8 @@ def arg_parser():
     parser.add_argument("--mode", type=int, default=0, help="defines test mode. '0' for baseline or '1' for i2cirl")
     parser.add_argument("--save_every", type=int, default=10)
     parser.add_argument("--generator", action=argparse.BooleanOptionalAction)
+    parser.add_argument("--generator_path", type=str, default="/nas-ctm01/homes/jdfernandes/cadpath-ssl/saved/cycle-gan/Gen1-no-data-aug_.pth")
+    parser.add_argument("--tiles_path", type=str, default="/nas-ctm01/partners/IMPDIAGNOSTICS/cadpath/CRC_Bern/tiles/level-0/")
     parser.set_defaults(generator=True)
     args = parser.parse_args()
     return args
@@ -131,7 +133,7 @@ def main(
                     ToTensorV2(),
                 ])
     dataset = TilesDataset(
-        path="/nas-ctm01/partners/IMPDIAGNOSTICS/cadpath/CRC_Bern/tiles/level-0/",
+        path=args.tiles_path,
         transform=transform,
         augment=False,
         return_key=True,
@@ -167,7 +169,7 @@ def main(
         generator = Generator(img_channels=3, num_residuals=15).to(device)
         generator.load_state_dict(
             torch.load(
-               "/nas-ctm01/homes/jdfernandes/cadpath-ssl/saved/cycle-gan/Gen1-no-data-aug_.pth",
+               args.generator_path,
                map_location=device)["model_state_dict"]
         )
     else: 
