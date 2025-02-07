@@ -10,4 +10,4 @@ Due to the high variability of Hematoxylin and Eosin (H&E)-stained Whole Slide I
 
 ## Clone this repository
 
-To clone this repository open a terminal window and type 
+To clone this repository open a terminal window and type ´´git clone git@github.com:joao-nunes/domain-adaptation-cpath.git´´
