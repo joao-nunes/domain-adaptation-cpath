@@ -16,7 +16,6 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 
 from cpathutils.datasets import TilesDataset
-from models.resnet import I2CIRLResNet
 from utils.qwk import *
 from utils.seeds import seed_worker
 from cycle_gan import Generator
