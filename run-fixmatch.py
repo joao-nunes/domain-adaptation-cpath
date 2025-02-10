@@ -23,6 +23,32 @@ np.random.seed(SEED)
 torch.backends.cudnn.benchmark = True
 torch.backends.cudnn.enabled = True
 
+def parse_args()
+    parser = ArgumentParser()
+    parser.add_argument("--train_libraryfile", type=str, default="./data/train_otsu_512_100_10k.tar")
+    parser.add_argument("--train_libraryfile2", type=str, default="./data/BernCRC_test_otsu_512_100_map2.tar")
+    parser.add_argument("--val_libraryfile", type=str, default="./data/train_otsu_512_100_10k.tar")
+    parser.add_argument("--val_libraryfile2", default="./data/BernCRC_test_otsu_512_100_map2.tar")
+    parser.add_argument("--train_json", type=str, default="./data/train_test_splits/train-567.json")
+    parser.add_argument("--train_json2", type=str, default="/nas-ctm01/homes/jdfernandes/cadpath-ssl/data/train_test_splits/bern_train_split_fold_1_lib.json")
+    parser.add_argument("--valid_json", type=str, default="./data/train_test_splits/valid.json")
+    parser.add_argument("--valid_json2", type=str, default="/nas-ctm01/homes/jdfernandes/cadpath-ssl/data/train_test_splits/bern_val_split_fold_1_lib.json")
+    parser.add_argument("--resume", action=BooleanOptionalAction)
+    parser.add_argument("--ckpt", type=str, default="./saved/baseline/09-20-2023-12:49:29_resnet34.pth")
+    parser.add_argument("--num_classes", type=int, default=3)
+    parser.add_argument("--in_features", type=int, default=512)
+    parser.add_argument("--batch_size", type=int, default=256)
+    parser.add_argument("--workers", type=int, default=16)
+    parser.add_argument("--optimizer", type=str, default="sgd")
+    parser.add_argument("--save_dir", type=str, default="./saved/fixmatch/")
+    parser.add_argument("--output", type=str, default="resnet34")
+    parser.add_argument("--lr", type=float, default=1e-4)
+    parser.add_argument("--epochs", type=int, default=30)
+    parser.add_argument("--thr", type=float, default=0.9)
+    parser.add_argument("--lmbd", type=float, default=0.3)
+    parser.add_argument("--tau", type=float, default=0.9)
+
+
 def train(
     model: Any,
     trainloader1,
