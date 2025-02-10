@@ -14,7 +14,7 @@ To clone this repository open a terminal window and type:
 
 ```$ git clone git@github.com:joao-nunes/domain-adaptation-cpath.git```
 
-##Install environment and dependencies
+## Install environment and dependencies
 
 ```
 $ conda env create --file=environment.yaml
