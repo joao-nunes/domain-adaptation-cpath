@@ -100,3 +100,33 @@ This script accepts the following command line arguments:
 --tiles_path: path to wsi tiles
 ```
 
+Run the TransMIL model
+
+```$ python3 run-transMIL.py```
+
+This script accepts the following command line arguments
+
+```
+--lr
+--wdecay
+--train_lib
+--val_lib
+--train_lib2
+--val_lib2
+--train_path
+--val_path
+--train_apth2
+--val_path2
+--train_json
+--valid_json
+--train_json2
+--valid_json2
+--fc_size
+--model
+--n_heads
+--trial
+--lmbd
+--finetune
+--multi_source
+--lmbd_
+```
