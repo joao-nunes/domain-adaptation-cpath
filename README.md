@@ -30,8 +30,8 @@ $ python3 run_baseline.py {command line arguments}
 This script accepts the following command line arguments:
 
 ```
---train-library_file: library file with tile coords and target annotations for the training_set
----val_library_file: library file with tile coords and target annotationss for the training se
+--train-library_file: library file with tile coords and target annotations for the training set
+---val_library_file: library file with tile coords and target annotationss for the validation set
 --train_json: jsonfile containing information for the training images
 --valid_json: jsonfile containing infromation for the validation images
 --resume: wether or not to resume training from last saved chekpoint
@@ -47,4 +47,37 @@ This script accepts the following command line arguments:
 "lr": learning rate
 "epochs": num of epochs
 
+```
+
+Train the FixMatch feature extractor
+
+```
+$ python3 run-fixmatch.py
+```
+
+This script accepts the following command line arguments
+
+```
+--train_libraryfile: library file with tile coords and target annotations for the source training set (supervised loss)
+--train_libraryfile2: library file with tile coords and target annotations for the target training set (unsupervised loss)
+--val_libraryfile:  library file with tile coords and target annotationss for the source validation set (supervised loss)
+--val_libraryfile2: library file with tile coords and target annotationss for the target validation set (unsupervised loss)
+--train_json: jsonfile containing information for the source training images
+--train_json2: jsonfile containing information for the target training images
+--valid_json: jsonfile containing information for the source validation images
+--valid_json2: jsonfile containing information for the target validation images
+--resume: wether or not to resume training from last saved chekpoint
+--ckpt: last saved checkpoint
+--num_classes: number of classes
+--in_features: number of features
+--batch_size: batch size
+--workers: number of workers
+--optimizer: optimizer for training the ML model
+--save_dir: directory to save the results
+--output: file name to save the model to
+--lr: learning rate
+--epochs: number of training epochs
+--thr: confidence threshold for consistency regularization
+--lmbd: weight term of the unsupervised loss
+--tau: scaling parameter for soft logits
 ```
