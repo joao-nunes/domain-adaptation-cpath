@@ -52,7 +52,7 @@ This script accepts the following command line arguments:
 Train the FixMatch feature extractor
 
 ```
-$ python3 run-fixmatch.py
+$ python3 run-fixmatch.py {command line arguments}
 ```
 
 This script accepts the following command line arguments
@@ -81,3 +81,22 @@ This script accepts the following command line arguments
 --lmbd: weight term of the unsupervised loss
 --tau: temperature for sharpening of pseudo-labels
 ```
+
+Save embeddings
+
+``` $ python3 save_embeddings.py {command line arguments}" ```
+
+This script accepts the following command line arguments:
+
+```
+--ckpt: model checkpoint to use to extract tile-level features
+--timestamp: unique run identifier
+--name: model name
+--libraryfile: libraryfile
+--outdir: name of the output directory to save model to
+--save_every: number of iterations at which to save the model
+--generator: wether to transform the data to a different domain using a generator from the cycleGAN
+--generator_path: path to the generator
+--tiles_path: path to wsi tiles
+```
+
