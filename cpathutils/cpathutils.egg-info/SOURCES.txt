@@ -1,0 +1,9 @@
+README.md
+setup.py
+cpathutils/__init__.py
+cpathutils/datasets.py
+cpathutils/histoprep.py
+cpathutils.egg-info/PKG-INFO
+cpathutils.egg-info/SOURCES.txt
+cpathutils.egg-info/dependency_links.txt
+cpathutils.egg-info/top_level.txt
