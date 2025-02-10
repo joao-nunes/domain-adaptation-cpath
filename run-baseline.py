@@ -47,7 +47,7 @@ def parse_args():
     parser.add_argumenr("--save_dir", type=str, default="./saved/baseline/09-20-2023-12:49:29_resnet34.pth")
     parser.add_argument("--output", type=str, default="resnet34")
     parser.add_argument("--mydataset", type=str, default="BaseDataset")
-    parser.add_argument("--lr", type = float, default="1e-4")
+    parser.add_argument("--lr", type = float, default=1e-4)
     parser.add_argument("--epochs", type=int, default=30)
     parser.set_defaults(resume=False)
     return parser.parse_args()
