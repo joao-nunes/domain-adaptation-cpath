@@ -36,7 +36,7 @@ This script accepts the following command line arguments:
 --valid_json: jsonfile containing infromation for the validation images
 --resume: wether or not to resume training from last saved chekpoint
 --ckpt: last saved checkppoint
-"--num_claases: number fo classes"
+"--num_classes: number fo classes"
 "--in_features": number of features
 "--batch_size": batch_size to consider. Note that for the training set. the actual batch size will be batch_size//8
 "--workers": number of workers
