@@ -79,5 +79,5 @@ This script accepts the following command line arguments
 --epochs: number of training epochs
 --thr: confidence threshold for consistency regularization
 --lmbd: weight term of the unsupervised loss
---tau: scaling parameter for soft logits
+--tau: temperature for sharpening of pseudo-labels
 ```
