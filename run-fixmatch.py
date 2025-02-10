@@ -47,6 +47,7 @@ def parse_args()
     parser.add_argument("--thr", type=float, default=0.9)
     parser.add_argument("--lmbd", type=float, default=0.3)
     parser.add_argument("--tau", type=float, default=0.9)
+    return parser.parse_args()
 
 
 def train(
@@ -264,6 +265,11 @@ def main(
         optimizer: str = "sgd",
         save_dir: str = "./saved/fixmatch/bern-crc-ablation",
         output: str = "resnet34",
+        epochs: int = 30,
+        lr: float = 1e-4,
+        thr: float = 0.9,
+        lmbd: float = 0.3,
+        tau: float = 0.9,
 ):
     device = torch.device("cuda") if torch.cuda.is_available() else "cpu"
 
@@ -366,9 +372,36 @@ def main(
         save_dir,
         output,
         resume=resume,
-        ckpt=ckpt
+        ckpt=ckpt,
+        epochs=epochs,
+        lr=lr,
+        thr=thr,
+        lmbd=lmbd,
+        tau=tau
     )
     print("Execution finished!")
 
 if __name__ == '__main__':
-    main()
+    args = parser.parse_args()
+    main(args.train_libraryfile,
+        args.train_libraryfile2,
+        args.val_libraryfile,
+        args.val_libraryfile2,
+        args.train_json,
+        args.train_json2,
+        args.valid_json,
+        args.valid_json2,
+        args.resume,
+        args.ckpt,
+        args.num_classes,
+        args.in_features,
+        args.batch_size,
+        args.workers,
+        args.optimizer,
+        args.save_dir,
+        args.output,
+        args.epochs,
+        args.lr,
+        args.thr,
+        args.lmbd,
+        args.tau)
