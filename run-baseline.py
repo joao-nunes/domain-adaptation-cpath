@@ -96,10 +96,7 @@ def train(
                 target = target.to(device)
             with torch.cuda.amp.autocast():
                 optimizer.zero_grad()
-                if len(batch) == 3:
-                    logits = model([resol_1, resol_2])
-                else:
-                    logits = model(image)
+                logits = model(image)
                 loss = qwk(logits, target, num_classes)
                 scaler.scale(loss).backward()
                 scaler.step(optimizer)
@@ -128,21 +125,13 @@ def train(
         pred = []
         true = []
         for step, batch in enumerate(tqdm(valloader)):
-            if len(batch)==3:
-                resol_1, resol_2, target = batch
-                resol_1 = resol_1.to(device)
-                resol_2 = resol_2.to(device)
-                target = target.to(device)
-            else:
-                image, target = batch
-                image = image.to(device)
-                target = target.to(device)
+            
+            image, target = batch
+            image = image.to(device)
+            target = target.to(device)
             with torch.cuda.amp.autocast():
                 with torch.no_grad():   
-                    if len(batch) == 3:
-                        logits = model([resol_1, resol_2])
-                    else:
-                        logits = model(image)
+                    logits = model(image)
                     probas = torch.nn.functional.softmax(logits.float(), dim=1).float()
             pred.append(torch.argmax(probas, dim=1))
             true.append(target)
@@ -219,12 +208,10 @@ def main(
         generator=g
         )
     
-    if not multiscale:
-        model = models.resnet34(
-                weights=ResNet34_Weights.DEFAULT)
-        model.fc = nn.Linear(in_features, num_classes)
-    else:
-        model = SiamResNet()
+
+    model = models.resnet34(
+            weights=ResNet34_Weights.DEFAULT)
+    model.fc = nn.Linear(in_features, num_classes)
         
     model = model.to(device)
     if resume:
