@@ -14,7 +14,6 @@ from torch.utils.tensorboard import SummaryWriter
 from torch import autograd
 from torch.optim.swa_utils import AveragedModel
 from torch import autograd
-from unet_parts import *
 import copy
 from PIL import Image
 import torchvision.models as models
