@@ -19,3 +19,32 @@ To clone this repository open a terminal window and type:
 ```
 $ conda env create --file=environment.yaml
 ```
+## Usage
+
+Train baseline feature extractor (resnet-34) supervised learning using only annotated data:
+
+```
+$ python3 run_baseline.py {command line arguments}
+```
+
+This script accepts the following command line arguments:
+
+```
+--train-library_file: library file with tile coords and target annotations for the training_set
+---val_library_file: library file with tile coords and target annotationss for the training se
+--train_json: jsonfile containing information for the training images
+--valid_json: jsonfile containing infromation for the validation images
+--resume: wether or not to resume training from last saved chekpoint
+--ckpt: last saved checkppoint
+"--num_claases: number fo classes"
+"--in_features": number of features
+"--batch_size": batch_size to consider. Note that for the training set. the actual batch size will be batch_size//8
+"--workers": number of workers
+"optimizer": optimizer for training the ML model
+"save_dir": directory to save the results
+""output": file name to save the model to
+"mydataset": dataset class to load the data
+"lr": learning rate
+"epochs": num of epochs
+
+```
