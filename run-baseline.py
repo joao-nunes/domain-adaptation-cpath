@@ -17,15 +17,41 @@ from data.datasets import BaseDataset
 from utils.qwk import *
 from utils.seeds import seed_worker
 from utils.identity import Identity
-from models.resnet import SiamResNet
 
 from data import datasets
 import sys
+
+from argparse import ArgumentParser
+import argparse
+
 SEED=42
 torch.manual_seed(SEED)
 np.random.seed(SEED)
 torch.backends.cudnn.benchmark = True
 torch.backends.cudnn.enabled = True
+
+
+def parse_args():
+    parser = ArgumentParser()
+    parser.add_argument("--train_library_file",type=str, default="./data/train_otsu_512_100_10k.tar")
+    parser.add_argument("val_library_file", type=str, default="./data/train_otsu_512_100_10k.tar")
+    parser.add_argument("--train_json", type=str, default="./data/train_test_splits/train-567.json")
+    parser.add_argument("--valid_json", type=str, default="./data/train_test_splits/valid.json")
+    parser.add_argument("--resume", action=argparse.BooleanOptionalAction)
+    parser.add_argument("--ckpt", type=str, default="./saved/baseline/09-20-2023-12:49:29_resnet34.pth")
+    parser.add_argument("--num_classes", type=int, default=3)
+    parser.add_argument("--_in_features", type=int, defaault=512)
+    parser.add_argumrnt("--batch_size", type=int, default=256)
+    parser.add_argument("--workers", type="int", default="8")
+    parser..add_argument("--optimizer", type=str, default="sgd")
+    parser.add_argumenr("--save_dir", type=str, default="./saved/baseline/09-20-2023-12:49:29_resnet34.pth")
+    parser.add_argument("--output", type=str, default="resnet34")
+    parser.add_argument("--mydataset", type=str, default="BaseDataset")
+    parser.add_argument("--lr", type = float, default="1e-4")
+    parser.add_argument("--epochs", type=int, default=30)
+    parser.set_defaults(resume=False)
+    return parser.parse_args()
+
 
 def train(
     model: Any,
@@ -165,6 +191,8 @@ def main(
         output: str = "resnet34",
         multiscale: bool = False,
         mydataset: str = "BaseDataset",
+        lr: float = 1e-4,
+        epochs: int = 30,
 ):
     device = torch.device("cuda") if torch.cuda.is_available() else "cpu"
 
@@ -227,11 +255,31 @@ def main(
         save_dir,
         output,
         resume=resume,
-        ckpt=ckpt
+        ckpt=ckpt,
+        lr=lr,
+        epochs=epochs,
     )
     print("Execution finished!")
 
 
 
 if __name__ == '__main__':
-    main()
+    args = parse_args()
+    main(args.train_library_file,
+        args.val_library_file,
+        args.train_json,
+        args.valid_json,
+        args.resume,
+        args.ckpt,
+        args.num_classes,
+        args.in_features,
+        args.batch_size,
+        args.workers,
+        args.optimizer,
+        args.save_dir,
+        args.output,
+        args.multiscale,
+        args.mydataset,
+        args.lr,
+        args.epochs
+        )
