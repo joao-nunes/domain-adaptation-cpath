@@ -1,5 +1,4 @@
 from typing import Any
-from models.unet import UNet
 from argparse import ArgumentParser
 import torch.optim as optim
 import torch
