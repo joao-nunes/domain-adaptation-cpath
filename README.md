@@ -130,3 +130,35 @@ This script accepts the following command line arguments
 --multi_source
 --lmbd_
 ```
+
+Train TransMIL slide level feature aggregator
+
+```
+$ python3 run-transMIL.py
+```
+
+This script accepts the following command line arguments
+
+```
+--lr: learning rate
+--wdecay: weight decay
+--train_lib: libraryfile with slide level targets train domain 1
+--val_lib: libraryfile with slide level targets validation train domain 1
+--train_lib2: libraryfile with slide level targets train domain 2
+--val_lib2: libraryfile with slide level targets validation train domain 2
+--train_path: path to folder containing train wsi embeddings domain 1
+--val_path: path to folder containing validation wsi embeddings domain 1
+--train_path2: path to folder containing train wsi embeddings domain 2
+--val_path2: path to folder containing validation wsi embeddings domain 2
+--train_json: path to json file containing the ids of training splits domain 1
+--valid_json: path to json file containing the ids of validation splits domain 1
+--train_json2: path to json file containing the ids of training splits domain 2
+--valid_json2: path to json file containing the ids of validation splits domain 2
+--fc_size: embedding size
+--model: path to model checkpoint
+--n_heads: number of classification heads 
+--lmbd: weight term for the diversity regularizatoin term
+--finetune: wether to finetune to the model
+--multisource: wether to train with multiple sources 
+--lmbd_: weight of the second source in multisource training
+```
