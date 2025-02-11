@@ -84,7 +84,7 @@ This script accepts the following command line arguments
 
 Save embeddings
 
-``` $ python3 save_embeddings.py {command line arguments}" ```
+``` $ python3 save_embeddings.py {command line arguments} ```
 
 This script accepts the following command line arguments:
 
@@ -100,41 +100,10 @@ This script accepts the following command line arguments:
 --tiles_path: path to wsi tiles
 ```
 
-Run the TransMIL model
-
-```$ python3 run-transMIL.py```
-
-This script accepts the following command line arguments
-
-```
---lr
---wdecay
---train_lib
---val_lib
---train_lib2
---val_lib2
---train_path
---val_path
---train_apth2
---val_path2
---train_json
---valid_json
---train_json2
---valid_json2
---fc_size
---model
---n_heads
---trial
---lmbd
---finetune
---multi_source
---lmbd_
-```
-
 Train TransMIL slide level feature aggregator
 
 ```
-$ python3 run-transMIL.py
+$ python3 run-transMIL.py {command line arguments}
 ```
 
 This script accepts the following command line arguments
