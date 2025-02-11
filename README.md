@@ -131,3 +131,25 @@ This script accepts the following command line arguments
 --multisource: wether to train with multiple sources 
 --lmbd_: weight of the second source in multisource training
 ```
+
+Test the Multiple Instance Learning classifier
+
+```
+$ python3 test-MIL.py {command line arguments}
+```
+This script accepts the following command line arguments
+
+```
+--lib: library file containing slide-level targets
+--ckpt: model checkpoint
+--path: path to wsi embeddings (test)
+--test_json: json file containing ids for test set split
+--run_id: unique run identifier
+--aggregation: aggregation function
+--split: split used for testing
+--trial: trial id
+--n_heads: number of classification heads
+--fc_size: size of embeddings
+--ensemble: wether or not to use ensemble
+--source: test set identifier
+```
