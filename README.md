@@ -157,7 +157,7 @@ This script accepts the following command line arguments
 --fc_size: embedding size
 --model: path to model checkpoint
 --n_heads: number of classification heads 
---lmbd: weight term for the diversity regularizatoin term
+--lmbd: weight term for the diversity regularization term
 --finetune: wether to finetune to the model
 --multisource: wether to train with multiple sources 
 --lmbd_: weight of the second source in multisource training
